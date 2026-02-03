@@ -1,0 +1,63 @@
+{
+  "testName": "SET-007-JS-ALTERNATIVES",
+  "timestamp": "2026-02-03T18:08:32.147Z",
+  "status": "COMPLETE",
+  "findings": [
+    {
+      "package": "ucp-content",
+      "loaded": true,
+      "exports": [
+        "Content",
+        "ContentType",
+        "Document",
+        "EdgeType",
+        "IdMapper",
+        "PromptBuilder",
+        "PromptPresets",
+        "SnapshotManager",
+        "WasmAuditEntry",
+        "WasmClearResult",
+        "WasmDeletedContent",
+        "WasmEngine",
+        "WasmEngineConfig",
+        "WasmMetricsRecorder",
+        "WasmResourceLimits",
+        "WasmTraversalConfig",
+        "WasmTraversalEngine",
+        "WasmTraversalFilter",
+        "WasmUclCapability",
+        "WasmUcpEvent",
+        "WasmValidationIssue",
+        "WasmValidationPipeline",
+        "WasmValidationResult",
+        "WasmWriteSectionResult",
+        "clearSectionWithUndo",
+        "createDocument",
+        "executeUcl",
+        "findSectionByPath",
+        "getAllSections",
+        "getSectionDepth",
+        "init",
+        "parseHtml",
+        "parseMarkdown",
+        "renderMarkdown",
+        "restoreDeletedSection",
+        "version",
+        "writeSection"
+      ],
+      "hasDocument": true,
+      "status": "WORKING"
+    },
+    {
+      "package": "@ucp-js/sdk",
+      "loaded": false,
+      "error": "Cannot find module '/home/antonio/programming/24-hour-testers/24-hour-ucp-testers/node_modules/@ucp-js/sdk/dist/cjs/index.js'",
+      "status": "FAILED"
+    }
+  ],
+  "conclusion": {
+    "documentedImport": "import { Document } from '@ucp-core/core'",
+    "workingAlternative": "const { Document } = require('ucp-content')",
+    "recommendation": "Update documentation to use ucp-content package"
+  }
+}

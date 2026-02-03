@@ -1,0 +1,49 @@
+=== SET-002 Test Results ===
+Date: Tue Feb  3 05:48:48 PM GMT 2026
+
+=== CLI Test ===
+Testing ucp --version...
+Exit code: 0
+Stdout: ucp 0.1.10
+Execution time: 9ms
+PASS: Version string is valid
+Status: 0
+
+=== Python Test ===
+Exit code: 0
+Stdout: ucp 0.1.10
+Stderr: 
+Execution time: 3.20ms
+PASS: Version string is valid
+Status: 0
+
+=== JavaScript Test ===
+Exit code: 0
+Stdout: ucp 0.1.10
+Execution time: 7ms
+PASS: Version string is valid
+Status: 0
+
+=== Rust Test ===
+warning: unused imports: `Read` and `self`
+ --> src/main.rs:3:15
+  |
+3 | use std::io::{self, Read};
+  |               ^^^^  ^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `test_ucp_version` (bin "test_ucp_version") generated 1 warning (run `cargo fix --bin "test_ucp_version" -p test_ucp_version` to apply 1 suggestion)
+    Finished `release` profile [optimized] target(s) in 0.04s
+     Running `target/release/test_ucp_version`
+Exit code: 0
+Stdout: ucp 0.1.10
+Stderr: 
+Execution time: 3.72ms
+PASS: Version string is valid
+Status: 0
+
+=== SDK Version Comparison ===
+CLI Version: ucp 0.1.10
+Python SDK Version: 0.1.9
+JavaScript SDK Version: 

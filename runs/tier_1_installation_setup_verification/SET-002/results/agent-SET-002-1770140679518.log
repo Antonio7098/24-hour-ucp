@@ -1,0 +1,647 @@
+=== Agent Run: SET-002 ===
+Started: 2026-02-03T17:44:39.518819
+Runtime: opencode
+Model: minimax-coding-plan/MiniMax-M2.1
+Timeout: 270000ms (270s)
+Attempt: 1
+Resuming from: tests
+==================================================
+
+I'll execute the SET-002 test to verify `ucp --version` returns a valid version string. Let me start by exploring the repository structure and understanding what's available.
+[91m[1m| [0m[90m Bash     [0mList repository contents
+
+total 152
+-rw-rw-r--  1 antonio antonio   802 Feb  3 09:40 -
+drwxrwxr-x 13 antonio antonio  4096 Feb  3 17:44 .
+drwxrwxr-x  6 antonio antonio  4096 Feb  2 11:14 ..
+drwxrwxr-x  4 antonio antonio  4096 Jan 27 13:52 agent-resources
+drwxrwxr-x  2 antonio antonio  4096 Feb  2 14:58 config
+-rw-rw-r--  1 antonio antonio  1271 Jan 27 13:52 .gitignore
+-rw-rw-r--  1 antonio antonio  1453 Feb  3 09:40 json
+drwxrwxr-x  7 antonio antonio  4096 Feb  2 16:07 node_modules
+-rw-rw-r--  1 antonio antonio  2347 Feb  2 20:05 notes.txt
+-rw-rw-r--  1 antonio antonio  1232 Feb  2 16:07 package.json
+-rw-rw-r--  1 antonio antonio  1989 Feb  3 11:18 package-lock.json
+-rw-rw-r--  1 antonio antonio 18262 Feb  2 15:09 photosynthesis_test.md
+drwxrwxr-x  2 antonio antonio  4096 Feb  3 17:42 .processor
+-rw-rw-r--  1 antonio antonio  7555 Feb  2 15:00 README.md
+-rw-rw-r--  1 antonio antonio   178 Feb  2 20:07 requirements.txt
+drwxrwxr-x  2 antonio antonio  4096 Feb  2 16:10 results
+drwxrwxr-x  3 antonio antonio  4096 Feb  2 15:14 .ruff_cache
+-rw-rw-r--  1 antonio antonio  3697 Feb  2 20:10 run.py
+drwxrwxr-x  3 antonio antonio  4096 Feb  3 17:37 runs
+drwxrwxr-x  7 antonio antonio  4096 Feb  2 14:52 stageflow-docs
+drwxrwxr-x  3 antonio antonio  4096 Feb  3 11:03 streamlit
+-rw-rw-r--  1 antonio antonio 27432 Feb  3 17:44 SUT-CHECKLIST.md
+-rw-rw-r--  1 antonio antonio 10300 Feb  2 14:55 SUT-PACKET.md
+drwxrwxr-x 16 antonio antonio  4096 Feb  2 14:51 ucp-docs
+drwxrwxr-x  5 antonio antonio  4096 Feb  2 15:11 .venv
+
+[91m[1m| [0m[90m Bash     [0mCheck if ucp CLI is installed
+
+/home/antonio/.cargo/bin/ucp
+ucp 0.1.10
+
+[91m[1m| [0m[90m Bash     [0mCheck Python requirements
+
+# 24h-testers package from local development
+-e ../24-hour-testers
+
+# Runtime dependencies
+stageflow-core>=0.1.0
+
+# Development dependencies
+pytest>=7.0.0
+pytest-asyncio>=0.21.0
+
+[91m[1m| [0m[90m Bash     [0mCheck npm packages
+
+{
+  "name": "24h-testers",
+  "version": "1.0.0",
+  "description": "> **Mission**: Keep an autonomous finding loop running. Describe the system under test (SUT), hand the loop a checklist, and let agents execute forever with zero manual babysitting.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "node tests/checklist-processor/checklist-parsing.test.js && node tests/checklist-processor/formatting.test.js && node tests/checklist-processor/runtime-config.test.js",
+    "cli": "node scripts/24h-cli.js",
+    "start": "node scripts/24h-cli.js start",
+    "status": "node scripts/24h-cli.js status",
+    "dashboard": "node scripts/24h-cli.js dashboard",
+    "clean:dry": "node scripts/24h-cli.js clean",
+    "clean": "node scripts/24h-cli.js clean --apply"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Antonio7098/24-hour-testers.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Antonio7098/24-hour-testers/issues"
+  },
+  "homepage": "https://github.com/Antonio7098/24-hour-testers#readme",
+  "dependencies": {
+    "@ucp-js/sdk": "^0.1.0",
+    "ucp": "^0.0.0",
+    "ucp-content": "^0.1.10"
+  }
+}
+
+[91m[1m| [0m[90m Bash     [0mCheck runs directory structure
+
+tier_1_installation_setup_verification
+
+[91m[1m| [0m[90m Bash     [0mCheck runs/tier_1 structure
+
+total 16
+drwxrwxr-x 4 antonio antonio 4096 Feb  3 17:37 .
+drwxrwxr-x 3 antonio antonio 4096 Feb  3 17:37 ..
+drwxrwxr-x 9 antonio antonio 4096 Feb  3 17:44 SET-001
+drwxrwxr-x 9 antonio antonio 4096 Feb  3 17:37 SET-002
+
+[91m[1m| [0m[90m Bash     [0mCheck ucp-content JS distribution
+
+ucp-content JS dist not found
+
+[91m[1m| [0m[90m Bash     [0mCheck Python ucp-content installation
+
+Name: ucp-content
+Version: 0.1.10
+Summary: Python bindings for UCP (Unified Content Protocol) - Rust implementation
+Home-page: 
+Author: UCP Contributors
+Author-email: 
+License: MIT
+Location: /home/antonio/programming/24-hour-testers/24-hour-ucp-testers/.venv/lib/python3.12/site-packages
+Requires: 
+Required-by: 
+
+[91m[1m| [0m[90m Bash     [0mCheck SET-002 directory structure
+
+total 36
+drwxrwxr-x 9 antonio antonio 4096 Feb  3 17:37 .
+drwxrwxr-x 4 antonio antonio 4096 Feb  3 17:37 ..
+drwxrwxr-x 2 antonio antonio 4096 Feb  3 17:37 artifacts
+drwxrwxr-x 2 antonio antonio 4096 Feb  3 17:37 config
+drwxrwxr-x 2 antonio antonio 4096 Feb  3 17:37 dx_evaluation
+drwxrwxr-x 2 antonio antonio 4096 Feb  3 17:37 mocks
+drwxrwxr-x 2 antonio antonio 4096 Feb  3 17:37 research
+drwxrwxr-x 2 antonio antonio 4096 Feb  3 17:44 results
+drwxrwxr-x 6 antonio antonio 4096 Feb  3 17:37 tests
+
+[91m[1m| [0m[90m Bash     [0mCheck Python SDK module structure
+
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'ucp_content'
+
+[91m[1m| [0m[90m Bash     [0mCheck ucp-content package contents
+
+package.json
+ucp_wasm_bg.wasm
+ucp_wasm.d.ts
+ucp_wasm.js
+
+[91m[1m| [0m[90m Bash     [0mCheck ucp_content.ucm module
+
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'ucp_content'
+
+[91m[1m| [0m[90m Bash     [0mCheck JS SDK structure
+
+/home/antonio/programming/24-hour-testers/24-hour-ucp-testers/node_modules/ucp-content/ucp_wasm.js
+
+[91m[1m| [0m[90m Bash     [0mList all node_modules
+
+napi-macros
+ucp
+ucp-content
+@ucp-js
+zod
+
+[91m[1m| [0m[90m Bash     [0mCheck installed ucp packages
+
+ucp-content       0.1.10
+
+[91m[1m| [0m[90m Bash     [0mCheck Python site-packages for ucp
+
+drwxrwxr-x  3 antonio antonio   4096 Feb  2 21:13 ucp
+drwxrwxr-x  2 antonio antonio   4096 Feb  2 21:13 ucp_content-0.1.10.dist-info
+
+[91m[1m| [0m[90m Bash     [0mCheck Python ucp_content import path
+
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'ucp_content'
+
+[91m[1m| [0m[90m Bash     [0mCheck ucp package contents
+
+total 5700
+drwxrwxr-x  3 antonio antonio    4096 Feb  2 21:13 .
+drwxrwxr-x 40 antonio antonio    4096 Feb  3 17:16 ..
+-rwxrwxr-x  1 antonio antonio 5818120 Feb  2 21:13 _core.cpython-312-x86_64-linux-gnu.so
+-rw-rw-r--  1 antonio antonio    3184 Feb  2 21:13 __init__.py
+drwxrwxr-x  2 antonio antonio    4096 Feb  2 21:13 __pycache__
+
+[91m[1m| [0m[90m Bash     [0mCheck Python package version
+
+0.1.9
+
+[91m[1m| [0m[90m Bash     [0mCheck Python SDK API
+
+"""
+UCP (Unified Content Protocol) - Python bindings for the Rust implementation.
+
+This package provides Python bindings to the high-performance Rust UCP library.
+
+Example:
+    >>> import ucp
+    >>> doc = ucp.create("My Document")
+    >>> block_id = doc.add_block(doc.root_id, "Hello, world!")
+    >>> print(ucp.render(doc))
+"""
+
+from ucp._core import (
+    # Classes
+    BlockId,
+    Content,
+    Block,
+    Document,
+    Edge,
+    EdgeType,
+    # Engine and validation
+    Engine,
+    EngineConfig,
+    TransactionId,
+    ResourceLimits,
+    ValidationPipeline,
+    ValidationResult,
+    ValidationIssue,
+    # Traversal
+    TraversalEngine,
+    TraversalConfig,
+    TraversalFilter,
+    TraversalDirection,
+    TraversalResult,
+    TraversalNode,
+    WriteSectionResult,
+    # Agent traversal system
+    AgentTraversal,
+    AgentSessionId,
+    SessionConfig,
+    AgentCapabilities,
+    ViewMode,
+    NavigationResult,
+    ExpansionResult,
+    BlockView,
+    SearchResult,
+    FindResult,
+    # Section utilities
+    ClearResult,
+    DeletedContent,
+    # LLM utilities
+    IdMapper,
+    PromptBuilder,
+    PromptPresets,
+    UclCapability,
+    # Snapshot management
+    SnapshotManager,
+    SnapshotInfo,
+    # Observability
+    UcpEvent,
+    EventBus,
+    AuditEntry,
+    MetricsRecorder,
+    # Functions
+    parse,
+    render,
+    parse_html,
+    execute_ucl,
+    create,
+    # Section functions
+    clear_section_with_undo,
+    restore_deleted_section,
+    find_section_by_path,
+    get_all_sections,
+    get_section_depth,
+    write_section,
+    # Exceptions
+    UcpError,
+    BlockNotFoundError,
+    InvalidBlockIdError,
+    CycleDetectedError,
+    ValidationError,
+    ParseError,
+)
+
+__version__ = "0.1.9"
+__all__ = [
+    # Classes
+    "BlockId",
+    "Content",
+    "Block",
+    "Document",
+    "Edge",
+    "EdgeType",
+    # Engine and validation
+    "Engine",
+    "EngineConfig",
+    "TransactionId",
+    "ResourceLimits",
+    "ValidationPipeline",
+    "ValidationResult",
+    "ValidationIssue",
+    # Traversal
+    "TraversalEngine",
+    "TraversalConfig",
+    "TraversalFilter",
+    "TraversalDirection",
+    "TraversalResult",
+    "TraversalNode",
+    "WriteSectionResult",
+    # Agent traversal system
+    "AgentTraversal",
+    "AgentSessionId",
+    "SessionConfig",
+    "AgentCapabilities",
+    "ViewMode",
+    "NavigationResult",
+    "ExpansionResult",
+    "BlockView",
+    "SearchResult",
+    "FindResult",
+    # Section utilities
+    "ClearResult",
+    "DeletedContent",
+    # LLM utilities
+    "IdMapper",
+    "PromptBuilder",
+    "PromptPresets",
+    "UclCapability",
+    # Snapshot management
+    "SnapshotManager",
+    "SnapshotInfo",
+    # Observability
+    "UcpEvent",
+    "EventBus",
+    "AuditEntry",
+    "MetricsRecorder",
+    # Functions
+    "parse",
+    "render",
+    "parse_html",
+    "execute_ucl",
+    "create",
+    # Section functions
+    "clear_section_with_undo",
+    "restore_deleted_section",
+    "find_section_by_path",
+    "get_all_sections",
+    "get_section_depth",
+    "write_section",
+    # Exceptions
+    "UcpError",
+    "BlockNotFoundError",
+    "InvalidBlockIdError",
+    "CycleDetectedError",
+    "ValidationError",
+    "ParseError",
+]
+
+Now let me check the JavaScript SDK and verify the CLI output more thoroughly:
+[96m[1m| [0m[90m Read     [0mhome/antonio/programming/24-hour-testers/24-hour-ucp-testers/node_modules/ucp-content/ucp_wasm.d.ts
+[91m[1m| [0m[90m Bash     [0mGet full CLI version and help output
+
+ucp 0.1.10
+---
+Command-line interface for Unified Content Protocol
+
+Usage: ucp [OPTIONS] <COMMAND>
+
+Commands:
+  create    Create a new UCP document
+  info      Display document information and statistics
+  validate  Validate a document against the validation pipeline
+  block     Block operations (add, get, delete, move, list, update)
+  edge      Edge (relationship) operations
+  nav       Navigate document structure
+  find      Find blocks matching criteria
+  orphans   Find orphaned (unreachable) blocks
+  tree      Display document hierarchy as a tree
+  prune     Prune orphaned or tagged blocks
+  tx        Transaction operations
+  snapshot  Snapshot (versioning) operations
+  import    Import content from various formats
+  export    Export document to various formats
+  ucl       UCL (Unified Content Language) operations
+  agent     Agent traversal operations
+  llm       LLM integration utilities
+  help      Print this message or the help of the given subcommand(s)
+
+Options:
+  -v, --verbose          Enable verbose output
+      --trace            Enable trace-level logging
+  -f, --format <FORMAT>  Output format (text, json) [default: text] [possible values: text, json]
+  -h, --help             Print help
+  -V, --version          Print version
+
+Now let me check if there's a Rust library and explore the JS SDK more:
+[91m[1m| [0m[90m Bash     [0mCheck installed Rust packages
+
+ucp-cli v0.1.10:
+    ucp
+
+[91m[1m| [0m[90m Bash     [0mTest JS SDK version function
+
+ucp module: object
+version function: function
+version(): 0.1.10
+
+Now I'll create the research document and test implementations:
+[91m[1m| [0m[90m Bash     [0mCheck research directory
+
+total 12
+drwxrwxr-x 2 antonio antonio 4096 Feb  3 17:37 .
+drwxrwxr-x 9 antonio antonio 4096 Feb  3 17:37 ..
+-rw-rw-r-- 1 antonio antonio  788 Feb  3 17:37 understanding.md
+
+[91m[1m| [0m[90m Bash     [0mCreate test directories
+[96m[1m| [0m[90m Read     [0mhome/antonio/programming/24-hour-testers/24-hour-ucp-testers/runs/tier_1_installation_setup_verification/SET-002/research/understanding.md
+[92m[1m| [0m[90m Edit     [0mhome/antonio/programming/24-hour-testers/24-hour-ucp-testers/runs/tier_1_installation_setup_verification/SET-002/research/understanding.md
+Now let me create the test implementations for each platform:
+[91m[1m| [0m[90m Bash     [0mCheck if test file exists
+
+total 12
+drwxrwxr-x 2 antonio antonio 4096 Feb  3 17:37 .
+drwxrwxr-x 6 antonio antonio 4096 Feb  3 17:37 ..
+-rw-rw-r-- 1 antonio antonio 1577 Feb  3 17:37 test_version.py
+
+[96m[1m| [0m[90m Read     [0mhome/antonio/programming/24-hour-testers/24-hour-ucp-testers/runs/tier_1_installation_setup_verification/SET-002/tests/python/test_version.py
+[91m[1m| [0m[90m Bash     [0mCheck all test directories
+
+total 24
+drwxrwxr-x 6 antonio antonio 4096 Feb  3 17:37 .
+drwxrwxr-x 9 antonio antonio 4096 Feb  3 17:37 ..
+drwxrwxr-x 2 antonio antonio 4096 Feb  3 17:37 cli
+drwxrwxr-x 2 antonio antonio 4096 Feb  3 17:37 javascript
+drwxrwxr-x 2 antonio antonio 4096 Feb  3 17:37 python
+drwxrwxr-x 3 antonio antonio 4096 Feb  3 17:38 rust
+
+[91m[1m| [0m[90m Bash     [0mCheck all test directories contents
+
+total 12
+drwxrwxr-x 2 antonio antonio 4096 Feb  3 17:37 .
+drwxrwxr-x 6 antonio antonio 4096 Feb  3 17:37 ..
+-rwxrwxr-x 1 antonio antonio  887 Feb  3 17:37 test_version.sh
+total 12
+drwxrwxr-x 2 antonio antonio 4096 Feb  3 17:37 .
+drwxrwxr-x 6 antonio antonio 4096 Feb  3 17:37 ..
+-rw-rw-r-- 1 antonio antonio 1062 Feb  3 17:37 test_version.js
+total 16
+drwxrwxr-x 3 antonio antonio 4096 Feb  3 17:38 .
+drwxrwxr-x 6 antonio antonio 4096 Feb  3 17:37 ..
+drwxrwxr-x 4 antonio antonio 4096 Feb  3 17:38 test_ucp_version
+-rw-rw-r-- 1 antonio antonio 1846 Feb  3 17:37 test_version.rs
+
+Let me read the existing test implementations and then run them:
+[96m[1m| [0m[90m Read     [0mhome/antonio/programming/24-hour-testers/24-hour-ucp-testers/runs/tier_1_installation_setup_verification/SET-002/tests/cli/test_version.sh
+[96m[1m| [0m[90m Read     [0mhome/antonio/programming/24-hour-testers/24-hour-ucp-testers/runs/tier_1_installation_setup_verification/SET-002/tests/javascript/test_version.js
+[96m[1m| [0m[90m Read     [0mhome/antonio/programming/24-hour-testers/24-hour-ucp-testers/runs/tier_1_installation_setup_verification/SET-002/tests/rust/test_version.rs
+Now let me run all the existing tests:
+[91m[1m| [0m[90m Bash     [0mRun Python test
+
+=== Running Python Test ===
+Exit code: 0
+Stdout: ucp 0.1.10
+Stderr: 
+Execution time: 10.78ms
+PASS: Version string is valid
+PYTHON: PASS
+
+[91m[1m| [0m[90m Bash     [0mRun CLI test
+
+=== Running CLI Test ===
+Testing ucp --version...
+Exit code: 0
+Stdout: ucp 0.1.10
+Execution time: 6ms
+PASS: Version string is valid
+CLI: PASS
+
+[91m[1m| [0m[90m Bash     [0mRun JavaScript test
+
+=== Running JavaScript Test ===
+Exit code: 0
+Stdout: ucp 0.1.10
+Execution time: 9ms
+PASS: Version string is valid
+JS: PASS
+
+Now let me also test the SDK-specific version functions and run the Rust test:
+[91m[1m| [0m[90m Bash     [0mTest Python SDK version function
+
+=== Testing Python SDK Version ===
+Has __version__: True
+Version: 0.1.9
+Execution time: 0.00ms
+PASS: Valid semver
+
+[91m[1m| [0m[90m Bash     [0mTest JavaScript SDK version function
+
+=== Testing JavaScript SDK Version ===
+JS SDK Version: 0.1.10
+Type: string
+Valid semver: YES
+
+Now let me compile and run the Rust test:
+[91m[1m| [0m[90m Bash     [0mBuild Rust test
+
+error: could not find `Cargo.toml` in `/home/antonio/programming/24-hour-testers/24-hour-ucp-testers/runs/tier_1_installation_setup_verification/SET-002/tests/rust` or any parent directory
+
+[91m[1m| [0m[90m Bash     [0mCheck rust test subdirectory
+
+total 28
+drwxrwxr-x 4 antonio antonio 4096 Feb  3 17:38 .
+drwxrwxr-x 3 antonio antonio 4096 Feb  3 17:38 ..
+-rw-rw-r-- 1 antonio antonio 1337 Feb  3 17:38 Cargo.lock
+-rw-rw-r-- 1 antonio antonio  104 Feb  3 17:38 Cargo.toml
+drwxrwxr-x 6 antonio antonio 4096 Feb  3 17:38 .git
+-rw-rw-r-- 1 antonio antonio    8 Feb  3 17:38 .gitignore
+drwxrwxr-x 2 antonio antonio 4096 Feb  3 17:38 src
+
+[91m[1m| [0m[90m Bash     [0mCheck for Cargo.toml
+
+[package]
+name = "test_ucp_version"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+regex = "1.12.3"
+
+[91m[1m| [0m[90m Bash     [0mBuild and run Rust test
+
+   Compiling memchr v2.7.6
+   Compiling regex-syntax v0.8.9
+   Compiling aho-corasick v1.1.4
+   Compiling regex-automata v0.4.14
+   Compiling regex v1.12.3
+   Compiling test_ucp_version v0.1.0 (/home/antonio/programming/24-hour-testers/24-hour-ucp-testers/runs/tier_1_installation_setup_verification/SET-002/tests/rust/test_ucp_version)
+    Finished `release` profile [optimized] target(s) in 9.22s
+     Running `target/release/test_ucp_version`
+Hello, world!
+
+[91m[1m| [0m[90m Bash     [0mCheck rust src directory
+
+total 12
+drwxrwxr-x 2 antonio antonio 4096 Feb  3 17:38 .
+drwxrwxr-x 5 antonio antonio 4096 Feb  3 17:48 ..
+-rw-rw-r-- 1 antonio antonio   45 Feb  3 17:38 main.rs
+
+[91m[1m| [0m[90m Bash     [0mCheck rust main.rs
+
+fn main() {
+    println!("Hello, world!");
+}
+
+[91m[1m| [0m[90m Bash     [0mReplace main.rs and run Rust test
+
+   Compiling test_ucp_version v0.1.0 (/home/antonio/programming/24-hour-testers/24-hour-ucp-testers/runs/tier_1_installation_setup_verification/SET-002/tests/rust/test_ucp_version)
+warning: unused imports: `Read` and `self`
+ --> src/main.rs:3:15
+  |
+3 | use std::io::{self, Read};
+  |               ^^^^  ^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `test_ucp_version` (bin "test_ucp_version") generated 1 warning (run `cargo fix --bin "test_ucp_version" -p test_ucp_version` to apply 1 suggestion)
+    Finished `release` profile [optimized] target(s) in 0.59s
+     Running `target/release/test_ucp_version`
+Exit code: 0
+Stdout: ucp 0.1.10
+Stderr: 
+Execution time: 10.43ms
+PASS: Version string is valid
+
+All tests pass. Now let me capture the results and create the final report:
+[91m[1m| [0m[90m Bash     [0mCapture all test results
+
+[eval]:1
+console.log(require(\"ucp-content\").version())
+                    ^
+
+SyntaxError: Invalid or unexpected token
+    at makeContextifyScript (node:internal/vm:185:14)
+    at node:internal/process/execution:107:22
+    at [eval]-wrapper:6:24
+    at runScript (node:internal/process/execution:101:62)
+    at evalScript (node:internal/process/execution:133:3)
+    at node:internal/main/eval_string:51:3
+
+Node.js v20.19.5
+=== SET-002 Test Results ===
+Date: Tue Feb  3 05:48:48 PM GMT 2026
+
+=== CLI Test ===
+Testing ucp --version...
+Exit code: 0
+Stdout: ucp 0.1.10
+Execution time: 9ms
+PASS: Version string is valid
+Status: 0
+
+=== Python Test ===
+Exit code: 0
+Stdout: ucp 0.1.10
+Stderr: 
+Execution time: 3.20ms
+PASS: Version string is valid
+Status: 0
+
+=== JavaScript Test ===
+Exit code: 0
+Stdout: ucp 0.1.10
+Execution time: 7ms
+PASS: Version string is valid
+Status: 0
+
+=== Rust Test ===
+warning: unused imports: `Read` and `self`
+ --> src/main.rs:3:15
+  |
+3 | use std::io::{self, Read};
+  |               ^^^^  ^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `test_ucp_version` (bin "test_ucp_version") generated 1 warning (run `cargo fix --bin "test_ucp_version" -p test_ucp_version` to apply 1 suggestion)
+    Finished `release` profile [optimized] target(s) in 0.04s
+     Running `target/release/test_ucp_version`
+Exit code: 0
+Stdout: ucp 0.1.10
+Stderr: 
+Execution time: 3.72ms
+PASS: Version string is valid
+Status: 0
+
+=== SDK Version Comparison ===
+CLI Version: ucp 0.1.10
+Python SDK Version: 0.1.9
+JavaScript SDK Version: 
+
+[91m[1m| [0m[90m Bash     [0mTest JS SDK version
+
+0.1.10
+
+Now let me create the final report:
+
+==================================================
+TIMEOUT after 270s (limit: 270s)
+Phase reached: tests
+Output bytes: 19816

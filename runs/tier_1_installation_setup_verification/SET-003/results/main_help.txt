@@ -1,0 +1,30 @@
+Command-line interface for Unified Content Protocol
+
+Usage: ucp [OPTIONS] <COMMAND>
+
+Commands:
+  create    Create a new UCP document
+  info      Display document information and statistics
+  validate  Validate a document against the validation pipeline
+  block     Block operations (add, get, delete, move, list, update)
+  edge      Edge (relationship) operations
+  nav       Navigate document structure
+  find      Find blocks matching criteria
+  orphans   Find orphaned (unreachable) blocks
+  tree      Display document hierarchy as a tree
+  prune     Prune orphaned or tagged blocks
+  tx        Transaction operations
+  snapshot  Snapshot (versioning) operations
+  import    Import content from various formats
+  export    Export document to various formats
+  ucl       UCL (Unified Content Language) operations
+  agent     Agent traversal operations
+  llm       LLM integration utilities
+  help      Print this message or the help of the given subcommand(s)
+
+Options:
+  -v, --verbose          Enable verbose output
+      --trace            Enable trace-level logging
+  -f, --format <FORMAT>  Output format (text, json) [default: text] [possible values: text, json]
+  -h, --help             Print help
+  -V, --version          Print version

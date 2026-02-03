@@ -1,0 +1,44 @@
+{
+  "testName": "SET-007-JS-CORRECT-API",
+  "timestamp": "2026-02-03T18:09:03.289Z",
+  "documentedImport": {
+    "statement": "import { Document } from '@ucp-core/core'",
+    "status": "FAIL",
+    "reason": "Package does not exist in npm registry"
+  },
+  "actualApi": {
+    "package": "ucp-content",
+    "importStatement": "const { createDocument, Document, Content } = require('ucp-content')",
+    "status": "PASS"
+  },
+  "tests": [
+    {
+      "name": "createDocument()",
+      "passed": true,
+      "result": "Created successfully",
+      "docId": "WASM pointer"
+    },
+    {
+      "name": "Document class exists",
+      "passed": true,
+      "type": "function"
+    },
+    {
+      "name": "Content class exists",
+      "passed": true,
+      "type": "function"
+    },
+    {
+      "name": "executeUcl() exists",
+      "passed": true,
+      "type": "function"
+    }
+  ],
+  "conclusion": {
+    "documentedApiStatus": "BROKEN",
+    "actualApiStatus": "WORKING",
+    "recommendedImport": "const { createDocument, Document, Content, executeUcl } = require('ucp-content')",
+    "issue": "Documentation references non-existent package @ucp-core/core",
+    "fix": "Update documentation to use ucp-content package or publish @ucp-core/core"
+  }
+}

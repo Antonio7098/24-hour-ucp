@@ -1,0 +1,44 @@
+{
+  "testName": "SET-007-JS-IMPORT",
+  "timestamp": "2026-02-03T18:08:13.429Z",
+  "importStatement": "import { Document } from '@ucp-core/core'",
+  "status": "FAIL",
+  "findings": [
+    {
+      "check": "Package existence check",
+      "expected": "Package @ucp-core/core should be installable",
+      "actual": "Package NOT FOUND in npm registry",
+      "passed": false,
+      "evidence": "npm install @ucp-core/core returned 404 Not Found"
+    },
+    {
+      "check": "Package require test",
+      "expected": "require(\"@ucp-core/core\") should succeed",
+      "actual": "Error: Cannot find module '@ucp-core/core'\nRequire stack:\n- /home/antonio/programming/24-hour-testers/24-hour-ucp-testers/runs/tier_1_installation_setup_verification/SET-007/tests/javascript/test_import.js",
+      "passed": false,
+      "evidence": "Cannot find module '@ucp-core/core'\nRequire stack:\n- /home/antonio/programming/24-hour-testers/24-hour-ucp-testers/runs/tier_1_installation_setup_verification/SET-007/tests/javascript/test_import.js"
+    },
+    {
+      "check": "Available alternatives",
+      "expected": "None - @ucp-core/core should be available",
+      "actual": [
+        {
+          "package": "ucp-content",
+          "available": true,
+          "exports": [
+            "Content",
+            "Document"
+          ]
+        },
+        {
+          "package": "@ucp-js/sdk",
+          "available": false,
+          "error": "Cannot find module '/home/antonio/programming/24-hour-testers/24-hour-ucp-testers/node_modules/@ucp-js/sdk/dist/cjs/index.js'"
+        }
+      ],
+      "passed": false,
+      "evidence": "Documented package missing, alternatives exist but are undocumented"
+    }
+  ],
+  "recommendation": "Publish @ucp-core/core to npm or update documentation to reflect actual available packages"
+}

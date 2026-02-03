@@ -1,0 +1,14 @@
+/home/antonio/programming/24-hour-testers/24-hour-ucp-testers/runs/tier_1_installation_setup_verification/SET-008/tests/rust/target/debug/deps/ucm_core-515f82718548e7ca.d: /home/antonio/programming/ucp/unified-content-protocol/crates/ucm-core/src/lib.rs /home/antonio/programming/ucp/unified-content-protocol/crates/ucm-core/src/block.rs /home/antonio/programming/ucp/unified-content-protocol/crates/ucm-core/src/content.rs /home/antonio/programming/ucp/unified-content-protocol/crates/ucm-core/src/document.rs /home/antonio/programming/ucp/unified-content-protocol/crates/ucm-core/src/edge.rs /home/antonio/programming/ucp/unified-content-protocol/crates/ucm-core/src/error.rs /home/antonio/programming/ucp/unified-content-protocol/crates/ucm-core/src/id.rs /home/antonio/programming/ucp/unified-content-protocol/crates/ucm-core/src/metadata.rs /home/antonio/programming/ucp/unified-content-protocol/crates/ucm-core/src/normalize.rs /home/antonio/programming/ucp/unified-content-protocol/crates/ucm-core/src/version.rs
+
+/home/antonio/programming/24-hour-testers/24-hour-ucp-testers/runs/tier_1_installation_setup_verification/SET-008/tests/rust/target/debug/deps/libucm_core-515f82718548e7ca.rmeta: /home/antonio/programming/ucp/unified-content-protocol/crates/ucm-core/src/lib.rs /home/antonio/programming/ucp/unified-content-protocol/crates/ucm-core/src/block.rs /home/antonio/programming/ucp/unified-content-protocol/crates/ucm-core/src/content.rs /home/antonio/programming/ucp/unified-content-protocol/crates/ucm-core/src/document.rs /home/antonio/programming/ucp/unified-content-protocol/crates/ucm-core/src/edge.rs /home/antonio/programming/ucp/unified-content-protocol/crates/ucm-core/src/error.rs /home/antonio/programming/ucp/unified-content-protocol/crates/ucm-core/src/id.rs /home/antonio/programming/ucp/unified-content-protocol/crates/ucm-core/src/metadata.rs /home/antonio/programming/ucp/unified-content-protocol/crates/ucm-core/src/normalize.rs /home/antonio/programming/ucp/unified-content-protocol/crates/ucm-core/src/version.rs
+
+/home/antonio/programming/ucp/unified-content-protocol/crates/ucm-core/src/lib.rs:
+/home/antonio/programming/ucp/unified-content-protocol/crates/ucm-core/src/block.rs:
+/home/antonio/programming/ucp/unified-content-protocol/crates/ucm-core/src/content.rs:
+/home/antonio/programming/ucp/unified-content-protocol/crates/ucm-core/src/document.rs:
+/home/antonio/programming/ucp/unified-content-protocol/crates/ucm-core/src/edge.rs:
+/home/antonio/programming/ucp/unified-content-protocol/crates/ucm-core/src/error.rs:
+/home/antonio/programming/ucp/unified-content-protocol/crates/ucm-core/src/id.rs:
+/home/antonio/programming/ucp/unified-content-protocol/crates/ucm-core/src/metadata.rs:
+/home/antonio/programming/ucp/unified-content-protocol/crates/ucm-core/src/normalize.rs:
+/home/antonio/programming/ucp/unified-content-protocol/crates/ucm-core/src/version.rs:

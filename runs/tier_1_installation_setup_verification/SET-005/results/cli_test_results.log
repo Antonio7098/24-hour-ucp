@@ -1,0 +1,45 @@
+=== SET-005: CLI Document Creation Test ===
+Date: 2026-02-03
+
+Test 1: Check ucp CLI availability
+✓ PASS: ucp version ucp 0.1.10
+
+Test 2: Create document via CLI
+{
+  "id": "doc_1890cea5eae2396e",
+  "root": "blk_ff0000000000000000000000",
+  "structure": {},
+  "blocks": {
+    "blk_ff0000000000000000000000": {
+      "id": "ff0000000000000000000000",
+      "content": {
+        "type": "text",
+        "text": "",
+        "format": "plain"
+      },
+      "metadata": {
+        "content_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+        "created_at": "2026-02-03T18:04:25.562236530Z",
+        "modified_at": "2026-02-03T18:04:25.562236530Z"
+      },
+      "version": {
+        "counter": 1,
+        "timestamp": "2026-02-03T18:04:25.562237927Z"
+      }
+    }
+  },
+  "metadata": {
+    "title": "Test Document",
+    "authors": [],
+    "created_at": "2026-02-03T18:04:25.562252664+00:00",
+    "modified_at": "2026-02-03T18:04:25.562252664+00:00"
+  },
+  "version": 1
+}
+✓ PASS: Document created successfully
+
+Test 3: Measure document creation time
+✓ Document created in 7ms
+
+=== CLI Tests Complete ===
+Status: PASS

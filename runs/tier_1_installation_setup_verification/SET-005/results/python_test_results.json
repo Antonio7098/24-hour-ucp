@@ -1,0 +1,63 @@
+{
+  "test_name": "SET-005: Document Import Test",
+  "documented_import": "from ucp_content import Document",
+  "actual_import": "from ucp import Document",
+  "tests": [
+    {
+      "name": "Documented import: from ucp_content import Document",
+      "status": "FAIL",
+      "error": "No module named 'ucp_content'",
+      "error_type": "ModuleNotFoundError",
+      "duration_ms": 0.07,
+      "note": "EXPECTED FAILURE - Package is 'ucp', not 'ucp_content'"
+    },
+    {
+      "name": "Actual import: from ucp import Document",
+      "status": "PASS",
+      "duration_ms": 2.28
+    },
+    {
+      "name": "Actual import: Document.create()",
+      "status": "PASS",
+      "document_id": "doc_1890ce9453b91c71",
+      "document_type": "Document",
+      "duration_ms": 2.41,
+      "note": "Document created with ID: doc_1890ce9453b91c71"
+    },
+    {
+      "name": "Document has attribute: id",
+      "status": "PASS",
+      "duration_ms": 0
+    },
+    {
+      "name": "Document has attribute: root_id",
+      "status": "PASS",
+      "duration_ms": 0
+    },
+    {
+      "name": "Document has attribute: add_block",
+      "status": "PASS",
+      "duration_ms": 0
+    },
+    {
+      "name": "Document has attribute: find_by_tag",
+      "status": "PASS",
+      "duration_ms": 0
+    },
+    {
+      "name": "Package version check",
+      "status": "PASS",
+      "version": "0.1.9",
+      "duration_ms": 0
+    }
+  ],
+  "start_time": 1770141790.009279,
+  "duration_ms": 2.54,
+  "summary": {
+    "passed": 7,
+    "failed": 1,
+    "errors": 0,
+    "total": 8
+  },
+  "overall_status": "PASS"
+}

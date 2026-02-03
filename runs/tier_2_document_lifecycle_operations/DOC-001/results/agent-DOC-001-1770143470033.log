@@ -1,0 +1,575 @@
+=== Agent Run: DOC-001 ===
+Started: 2026-02-03T18:31:10.033448
+Runtime: opencode
+Model: minimax-coding-plan/MiniMax-M2.1
+Timeout: 270000ms (270s)
+Attempt: 1
+==================================================
+
+I'll start by exploring the environment to understand what's available for UCP testing.
+[91m[1m| [0m[90m Bash     [0mCheck current directory and contents
+
+/home/antonio/programming/24-hour-testers/24-hour-ucp-testers
+total 152
+-rw-rw-r--  1 antonio antonio   802 Feb  3 09:40 -
+drwxrwxr-x 13 antonio antonio  4096 Feb  3 18:30 .
+drwxrwxr-x  6 antonio antonio  4096 Feb  2 11:14 ..
+drwxrwxr-x  4 antonio antonio  4096 Jan 27 13:52 agent-resources
+drwxrwxr-x  2 antonio antonio  4096 Feb  2 14:58 config
+-rw-rw-r--  1 antonio antonio  1271 Jan 27 13:52 .gitignore
+-rw-rw-r--  1 antonio antonio   832 Feb  3 18:04 json
+drwxrwxr-x  7 antonio antonio  4096 Feb  2 16:07 node_modules
+-rw-rw-r--  1 antonio antonio  2347 Feb  2 20:05 notes.txt
+-rw-rw-r--  1 antonio antonio  1232 Feb  2 16:07 package.json
+-rw-rw-r--  1 antonio antonio  1989 Feb  3 11:18 package-lock.json
+-rw-rw-r--  1 antonio antonio 18262 Feb  2 15:09 photosynthesis_test.md
+drwxrwxr-x  2 antonio antonio  4096 Feb  3 17:42 .processor
+-rw-rw-r--  1 antonio antonio  7555 Feb  2 15:00 README.md
+-rw-rw-r--  1 antonio antonio   178 Feb  2 20:07 requirements.txt
+drwxrwxr-x  2 antonio antonio  4096 Feb  2 16:10 results
+drwxrwxr-x  3 antonio antonio  4096 Feb  2 15:14 .ruff_cache
+-rw-rw-r--  1 antonio antonio  3697 Feb  2 20:10 run.py
+drwxrwxr-x  4 antonio antonio  4096 Feb  3 18:31 runs
+drwxrwxr-x  7 antonio antonio  4096 Feb  2 14:52 stageflow-docs
+drwxrwxr-x  3 antonio antonio  4096 Feb  3 11:03 streamlit
+-rw-rw-r--  1 antonio antonio 27418 Feb  3 18:30 SUT-CHECKLIST.md
+-rw-rw-r--  1 antonio antonio 10300 Feb  2 14:55 SUT-PACKET.md
+drwxrwxr-x 16 antonio antonio  4096 Feb  2 14:51 ucp-docs
+drwxrwxr-x  5 antonio antonio  4096 Feb  2 15:11 .venv
+
+[91m[1m| [0m[90m Bash     [0mCheck if UCP CLI is installed
+
+/home/antonio/.cargo/bin/ucp
+
+[91m[1m| [0m[90m Bash     [0mCheck documentation directory
+
+total 76
+drwxrwxr-x 16 antonio antonio 4096 Feb  2 14:51 .
+drwxrwxr-x 13 antonio antonio 4096 Feb  3 18:30 ..
+drwxrwxr-x  2 antonio antonio 4096 Feb  2 14:51 conformance
+drwxrwxr-x  2 antonio antonio 4096 Feb  2 14:51 examples
+drwxrwxr-x  2 antonio antonio 4096 Feb  2 14:51 getting-started
+-rw-rw-r--  1 antonio antonio 3316 Feb  2 14:51 index.md
+-rw-rw-r--  1 antonio antonio 6538 Feb  2 14:51 README.md
+drwxrwxr-x  4 antonio antonio 4096 Feb  2 14:51 translators
+drwxrwxr-x  2 antonio antonio 4096 Feb  2 14:51 ucl-parser
+drwxrwxr-x  2 antonio antonio 4096 Feb  2 14:51 ucm-core
+drwxrwxr-x  2 antonio antonio 4096 Feb  2 14:51 ucm-editor
+drwxrwxr-x  2 antonio antonio 4096 Feb  2 14:51 ucm-engine
+drwxrwxr-x  2 antonio antonio 4096 Feb  2 14:51 ucp-agent
+drwxrwxr-x  2 antonio antonio 4096 Feb  2 14:51 ucp-api
+drwxrwxr-x  2 antonio antonio 4096 Feb  2 14:51 ucp-cli
+drwxrwxr-x  2 antonio antonio 4096 Feb  2 14:51 ucp-js
+drwxrwxr-x  2 antonio antonio 4096 Feb  2 14:51 ucp-llm
+drwxrwxr-x  2 antonio antonio 4096 Feb  2 14:51 ucp-observe
+
+[91m[1m| [0m[90m Bash     [0mCheck if Python SDK is available
+
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'ucp_content'
+Python SDK not installed
+
+[91m[1m| [0m[90m Bash     [0mCheck npm dependencies
+
+{
+  "@ucp-js/sdk": "^0.1.0",
+  "ucp": "^0.0.0",
+  "ucp-content": "^0.1.10"
+}
+
+[91m[1m| [0m[90m Bash     [0mCheck UCP CLI version
+
+ucp 0.1.10
+
+[91m[1m| [0m[90m Bash     [0mGet CLI help
+
+Command-line interface for Unified Content Protocol
+
+Usage: ucp [OPTIONS] <COMMAND>
+
+Commands:
+  create    Create a new UCP document
+  info      Display document information and statistics
+  validate  Validate a document against the validation pipeline
+  block     Block operations (add, get, delete, move, list, update)
+  edge      Edge (relationship) operations
+  nav       Navigate document structure
+  find      Find blocks matching criteria
+  orphans   Find orphaned (unreachable) blocks
+  tree      Display document hierarchy as a tree
+  prune     Prune orphaned or tagged blocks
+  tx        Transaction operations
+  snapshot  Snapshot (versioning) operations
+  import    Import content from various formats
+  export    Export document to various formats
+  ucl       UCL (Unified Content Language) operations
+  agent     Agent traversal operations
+  llm       LLM integration utilities
+  help      Print this message or the help of the given subcommand(s)
+
+Options:
+  -v, --verbose          Enable verbose output
+      --trace            Enable trace-level logging
+  -f, --format <FORMAT>  Output format (text, json) [default: text] [possible values: text, json]
+  -h, --help             Print help
+  -V, --version          Print version
+
+[91m[1m| [0m[90m Bash     [0mCheck JavaScript SDK location
+
+ls: cannot access 'node_modules/ucp-content/dist/js/': No such file or directory
+
+[91m[1m| [0m[90m Bash     [0mRead core documentation
+
+cat: ucp-docs/ucm-core/index.md: No such file or directory
+
+[91m[1m| [0m[90m Bash     [0mCreate test directory structure
+[91m[1m| [0m[90m Bash     [0mList ucm-core docs
+
+blocks.md
+content-types.md
+documents.md
+edges.md
+id-generation.md
+metadata.md
+README.md
+semantic-roles.md
+
+[91m[1m| [0m[90m Bash     [0mCheck ucp-content structure
+
+package.json
+ucp_wasm_bg.wasm
+ucp_wasm.d.ts
+ucp_wasm.js
+
+[91m[1m| [0m[90m Bash     [0mCheck ucp-content version
+
+    "ucp-content": "^0.1.10"
+  }
+}
+
+[96m[1m| [0m[90m Read     [0mhome/antonio/programming/24-hour-testers/24-hour-ucp-testers/ucp-docs/ucm-core/documents.md
+[96m[1m| [0m[90m Read     [0mhome/antonio/programming/24-hour-testers/24-hour-ucp-testers/ucp-docs/ucm-core/blocks.md
+Now I have a good understanding of the UCP API. Let me create the test implementations.
+[92m[1m| [0m[90m Write    [0mhome/antonio/programming/24-hour-testers/24-hour-ucp-testers/runs/tier_2_document_lifecycle_operations/DOC-001/research/understanding.md
+[91m[1m| [0m[90m Bash     [0mInstall Python SDK
+
+Requirement already satisfied: ucp-content in ./.venv/lib/python3.12/site-packages (0.1.10)
+
+[92m[1m| [0m[90m Write    [0mhome/antonio/programming/24-hour-testers/24-hour-ucp-testers/runs/tier_2_document_lifecycle_operations/DOC-001/tests/python/test_doc001.py
+[92m[1m| [0m[90m Edit     [0mhome/antonio/programming/24-hour-testers/24-hour-ucp-testers/runs/tier_2_document_lifecycle_operations/DOC-001/tests/python/test_doc001.py
+[92m[1m| [0m[90m Write    [0mhome/antonio/programming/24-hour-testers/24-hour-ucp-testers/runs/tier_2_document_lifecycle_operations/DOC-001/tests/python/test_doc001.py
+[91m[1m| [0m[90m Bash     [0mRun Python test
+
+Traceback (most recent call last):
+  File "/home/antonio/programming/24-hour-testers/24-hour-ucp-testers/runs/tier_2_document_lifecycle_operations/DOC-001/tests/python/test_doc001.py", line 166, in <module>
+    success = run_tests()
+              ^^^^^^^^^^^
+  File "/home/antonio/programming/24-hour-testers/24-hour-ucp-testers/runs/tier_2_document_lifecycle_operations/DOC-001/tests/python/test_doc001.py", line 27, in run_tests
+    from ucp_content import Document
+ModuleNotFoundError: No module named 'ucp_content'
+
+[91m[1m| [0m[90m Bash     [0mFind ucp packages
+
+drwxrwxr-x  3 antonio antonio   4096 Feb  2 21:13 ucp
+drwxrwxr-x  2 antonio antonio   4096 Feb  2 21:13 ucp_content-0.1.10.dist-info
+
+[91m[1m| [0m[90m Bash     [0mCheck ucp-content installation
+
+Name: ucp-content
+Version: 0.1.10
+Summary: Python bindings for UCP (Unified Content Protocol) - Rust implementation
+Home-page: 
+Author: UCP Contributors
+Author-email: 
+License: MIT
+Location: /home/antonio/programming/24-hour-testers/24-hour-ucp-testers/.venv/lib/python3.12/site-packages
+Requires: 
+Required-by: 
+
+[91m[1m| [0m[90m Bash     [0mCheck ucp package contents
+
+total 5700
+drwxrwxr-x  3 antonio antonio    4096 Feb  2 21:13 .
+drwxrwxr-x 40 antonio antonio    4096 Feb  3 18:21 ..
+-rwxrwxr-x  1 antonio antonio 5818120 Feb  2 21:13 _core.cpython-312-x86_64-linux-gnu.so
+-rw-rw-r--  1 antonio antonio    3184 Feb  2 21:13 __init__.py
+drwxrwxr-x  2 antonio antonio    4096 Feb  2 21:13 __pycache__
+
+[91m[1m| [0m[90m Bash     [0mCheck ucp package exports
+
+"""
+UCP (Unified Content Protocol) - Python bindings for the Rust implementation.
+
+This package provides Python bindings to the high-performance Rust UCP library.
+
+Example:
+    >>> import ucp
+    >>> doc = ucp.create("My Document")
+    >>> block_id = doc.add_block(doc.root_id, "Hello, world!")
+    >>> print(ucp.render(doc))
+"""
+
+from ucp._core import (
+    # Classes
+    BlockId,
+    Content,
+    Block,
+    Document,
+    Edge,
+    EdgeType,
+    # Engine and validation
+    Engine,
+    EngineConfig,
+    TransactionId,
+    ResourceLimits,
+    ValidationPipeline,
+    ValidationResult,
+    ValidationIssue,
+    # Traversal
+    TraversalEngine,
+    TraversalConfig,
+    TraversalFilter,
+    TraversalDirection,
+    TraversalResult,
+    TraversalNode,
+    WriteSectionResult,
+    # Agent traversal system
+    AgentTraversal,
+    AgentSessionId,
+    SessionConfig,
+    AgentCapabilities,
+    ViewMode,
+    NavigationResult,
+    ExpansionResult,
+    BlockView,
+    SearchResult,
+    FindResult,
+    # Section utilities
+    ClearResult,
+    DeletedContent,
+    # LLM utilities
+    IdMapper,
+    PromptBuilder,
+    PromptPresets,
+    UclCapability,
+    # Snapshot management
+    SnapshotManager,
+    SnapshotInfo,
+    # Observability
+    UcpEvent,
+    EventBus,
+    AuditEntry,
+    MetricsRecorder,
+    # Functions
+    parse,
+    render,
+    parse_html,
+    execute_ucl,
+    create,
+    # Section functions
+    clear_section_with_undo,
+    restore_deleted_section,
+    find_section_by_path,
+    get_all_sections,
+    get_section_depth,
+    write_section,
+    # Exceptions
+    UcpError,
+    BlockNotFoundError,
+    InvalidBlockIdError,
+    CycleDetectedError,
+    ValidationError,
+    ParseError,
+)
+
+__version__ = "0.1.9"
+__all__ = [
+    # Classes
+    "BlockId",
+    "Content",
+    "Block",
+    "Document",
+    "Edge",
+    "EdgeType",
+    # Engine and validation
+    "Engine",
+    "EngineConfig",
+    "TransactionId",
+    "ResourceLimits",
+    "ValidationPipeline",
+    "ValidationResult",
+    "ValidationIssue",
+    # Traversal
+    "TraversalEngine",
+    "TraversalConfig",
+    "TraversalFilter",
+    "TraversalDirection",
+    "TraversalResult",
+    "TraversalNode",
+    "WriteSectionResult",
+    # Agent traversal system
+    "AgentTraversal",
+    "AgentSessionId",
+    "SessionConfig",
+    "AgentCapabilities",
+    "ViewMode",
+    "NavigationResult",
+    "ExpansionResult",
+    "BlockView",
+    "SearchResult",
+    "FindResult",
+    # Section utilities
+    "ClearResult",
+    "DeletedContent",
+    # LLM utilities
+    "IdMapper",
+    "PromptBuilder",
+    "PromptPresets",
+    "UclCapability",
+    # Snapshot management
+    "SnapshotManager",
+    "SnapshotInfo",
+    # Observability
+    "UcpEvent",
+    "EventBus",
+    "AuditEntry",
+    "MetricsRecorder",
+    # Functions
+    "parse",
+    "render",
+    "parse_html",
+    "execute_ucl",
+    "create",
+    # Section functions
+    "clear_section_with_undo",
+    "restore_deleted_section",
+    "find_section_by_path",
+    "get_all_sections",
+    "get_section_depth",
+    "write_section",
+    # Exceptions
+    "UcpError",
+    "BlockNotFoundError",
+    "InvalidBlockIdError",
+    "CycleDetectedError",
+    "ValidationError",
+    "ParseError",
+]
+
+[92m[1m| [0m[90m Write    [0mhome/antonio/programming/24-hour-testers/24-hour-ucp-testers/runs/tier_2_document_lifecycle_operations/DOC-001/tests/python/test_doc001.py
+[91m[1m| [0m[90m Bash     [0mRun Python test
+
+[0.009s] ============================================================
+[0.009s] DOC-001: Create Empty Document and Verify Root Block
+[0.009s] ============================================================
+[0.009s] 
+--- Test 1: Create empty document ---
+[0.010s]   - Using ucp.create()
+[0.010s] PASS: Document.create() succeeded
+[0.010s] 
+--- Test 2: Document has valid ID ---
+[0.011s] PASS: Document has ID: doc_1890d03e1481...
+[0.011s] 
+--- Test 3: Root block exists ---
+[0.011s] PASS: Root block ID accessible: blk_ff0000000000...
+[0.011s] 
+--- Test 4: Block count is 1 ---
+Traceback (most recent call last):
+  File "/home/antonio/programming/24-hour-testers/24-hour-ucp-testers/runs/tier_2_document_lifecycle_operations/DOC-001/tests/python/test_doc001.py", line 208, in <module>
+    success = run_tests()
+              ^^^^^^^^^^^
+  File "/home/antonio/programming/24-hour-testers/24-hour-ucp-testers/runs/tier_2_document_lifecycle_operations/DOC-001/tests/python/test_doc001.py", line 74, in run_tests
+    block_count = block_count_fn()
+                  ^^^^^^^^^^^^^^^^
+TypeError: 'int' object is not callable
+
+[92m[1m| [0m[90m Edit     [0mhome/antonio/programming/24-hour-testers/24-hour-ucp-testers/runs/tier_2_document_lifecycle_operations/DOC-001/tests/python/test_doc001.py
+[92m[1m| [0m[90m Edit     [0mhome/antonio/programming/24-hour-testers/24-hour-ucp-testers/runs/tier_2_document_lifecycle_operations/DOC-001/tests/python/test_doc001.py
+[91m[1m| [0m[90m Bash     [0mRun Python test
+
+[0.002s] ============================================================
+[0.002s] DOC-001: Create Empty Document and Verify Root Block
+[0.002s] ============================================================
+[0.002s] 
+--- Test 1: Create empty document ---
+[0.002s]   - Using ucp.create()
+[0.002s] PASS: Document.create() succeeded
+[0.002s] 
+--- Test 2: Document has valid ID ---
+[0.002s] PASS: Document has ID: doc_1890d0426c61...
+[0.002s] 
+--- Test 3: Root block exists ---
+[0.002s] PASS: Root block ID accessible: blk_ff0000000000...
+[0.003s] 
+--- Test 4: Block count is 1 ---
+[0.003s] PASS: Block count is 1 (actual: 1)
+[0.003s] 
+--- Test 5: Root block is retrievable ---
+[0.003s] PASS: Root block retrieved successfully
+[0.003s] 
+--- Test 6: Root block properties ---
+[0.003s]   - Block ID: blk_ff0000000000000000000000
+[0.003s]   - Content type: text
+[0.003s]   - Role: None
+[0.003s]   - Tags: []
+[0.003s] PASS: Root block has expected properties
+[0.003s] 
+--- Test 7: Root block is identified as root ---
+[0.003s] PASS: is_root() returns True
+[0.003s] 
+--- Test 8: Root has no children ---
+[0.003s] PASS: Root has 0 children (empty document)
+[0.003s] 
+--- Test 9: Document validation ---
+[0.003s] PASS: Document validates (no issues)
+[0.003s] 
+--- Test 10: Export to JSON ---
+[0.003s]   - Exported blocks: 1
+[0.003s] PASS: JSON export contains exactly 1 block
+[0.003s] 
+============================================================
+[0.003s] SUMMARY
+[0.003s] ============================================================
+[0.003s] Document ID: doc_1890d0426c6175e7
+[0.003s] Root Block ID: blk_ff0000000000000000000000
+[0.003s] Block Count: 1
+[0.003s] Status: PASS
+[0.003s] ============================================================
+[0.003s] Document ID: doc_1890d0426c6175e7
+[0.004s] Root Block ID: blk_ff0000000000000000000000
+Traceback (most recent call last):
+  File "/home/antonio/programming/24-hour-testers/24-hour-ucp-testers/runs/tier_2_document_lifecycle_operations/DOC-001/tests/python/test_doc001.py", line 220, in <module>
+    success = run_tests()
+              ^^^^^^^^^^^
+  File "/home/antonio/programming/24-hour-testers/24-hour-ucp-testers/runs/tier_2_document_lifecycle_operations/DOC-001/tests/python/test_doc001.py", line 211, in run_tests
+    block_count_final = block_count_fn() if block_count_fn else "N/A"
+                                            ^^^^^^^^^^^^^^
+NameError: name 'block_count_fn' is not defined. Did you mean: 'block_count'?
+
+[92m[1m| [0m[90m Edit     [0mhome/antonio/programming/24-hour-testers/24-hour-ucp-testers/runs/tier_2_document_lifecycle_operations/DOC-001/tests/python/test_doc001.py
+[91m[1m| [0m[90m Bash     [0mRun Python test
+
+[0.002s] ============================================================
+[0.002s] DOC-001: Create Empty Document and Verify Root Block
+[0.002s] ============================================================
+[0.002s] 
+--- Test 1: Create empty document ---
+[0.002s]   - Using ucp.create()
+[0.002s] PASS: Document.create() succeeded
+[0.002s] 
+--- Test 2: Document has valid ID ---
+[0.002s] PASS: Document has ID: doc_1890d04590bd...
+[0.002s] 
+--- Test 3: Root block exists ---
+[0.002s] PASS: Root block ID accessible: blk_ff0000000000...
+[0.002s] 
+--- Test 4: Block count is 1 ---
+[0.002s] PASS: Block count is 1 (actual: 1)
+[0.002s] 
+--- Test 5: Root block is retrievable ---
+[0.002s] PASS: Root block retrieved successfully
+[0.002s] 
+--- Test 6: Root block properties ---
+[0.002s]   - Block ID: blk_ff0000000000000000000000
+[0.002s]   - Content type: text
+[0.002s]   - Role: None
+[0.002s]   - Tags: []
+[0.002s] PASS: Root block has expected properties
+[0.002s] 
+--- Test 7: Root block is identified as root ---
+[0.002s] PASS: is_root() returns True
+[0.002s] 
+--- Test 8: Root has no children ---
+[0.002s] PASS: Root has 0 children (empty document)
+[0.002s] 
+--- Test 9: Document validation ---
+[0.002s] PASS: Document validates (no issues)
+[0.002s] 
+--- Test 10: Export to JSON ---
+[0.002s]   - Exported blocks: 1
+[0.002s] PASS: JSON export contains exactly 1 block
+[0.002s] 
+============================================================
+[0.002s] SUMMARY
+[0.002s] ============================================================
+[0.002s] Document ID: doc_1890d04590bd460a
+[0.002s] Root Block ID: blk_ff0000000000000000000000
+[0.002s] Block Count: 1
+[0.002s] Status: PASS
+[0.002s] ============================================================
+[0.002s] Document ID: doc_1890d04590bd460a
+[0.002s] Root Block ID: blk_ff0000000000000000000000
+[0.002s] Block Count: 1
+[0.002s] Status: PASS
+[0.002s] ============================================================
+[0.002s] Document ID: doc_1890d04590bd460a
+[0.002s] Root Block ID: blk_ff0000000000000000000000
+Traceback (most recent call last):
+  File "/home/antonio/programming/24-hour-testers/24-hour-ucp-testers/runs/tier_2_document_lifecycle_operations/DOC-001/tests/python/test_doc001.py", line 232, in <module>
+    success = run_tests()
+              ^^^^^^^^^^^
+  File "/home/antonio/programming/24-hour-testers/24-hour-ucp-testers/runs/tier_2_document_lifecycle_operations/DOC-001/tests/python/test_doc001.py", line 223, in run_tests
+    block_count_final = block_count_fn() if block_count_fn else "N/A"
+                                            ^^^^^^^^^^^^^^
+NameError: name 'block_count_fn' is not defined. Did you mean: 'block_count'?
+
+[94m[1m| [0m[90m Grep     [0mblock_count_fn
+[96m[1m| [0m[90m Read     [0mhome/antonio/programming/24-hour-testers/24-hour-ucp-testers/runs/tier_2_document_lifecycle_operations/DOC-001/tests/python/test_doc001.py
+[96m[1m| [0m[90m Read     [0mhome/antonio/programming/24-hour-testers/24-hour-ucp-testers/runs/tier_2_document_lifecycle_operations/DOC-001/tests/python/test_doc001.py
+[92m[1m| [0m[90m Write    [0mhome/antonio/programming/24-hour-testers/24-hour-ucp-testers/runs/tier_2_document_lifecycle_operations/DOC-001/tests/python/test_doc001.py
+[91m[1m| [0m[90m Bash     [0mRun Python test
+
+[0.003s] ============================================================
+[0.003s] DOC-001: Create Empty Document and Verify Root Block
+[0.003s] ============================================================
+[0.003s] 
+--- Test 1: Create empty document ---
+[0.003s]   - Using ucp.create()
+[0.003s] PASS: Document.create() succeeded
+[0.003s] 
+--- Test 2: Document has valid ID ---
+[0.003s] PASS: Document has ID: doc_1890d0500e61...
+[0.003s] 
+--- Test 3: Root block exists ---
+[0.003s] PASS: Root block ID accessible: blk_ff0000000000...
+[0.003s] 
+--- Test 4: Block count is 1 ---
+[0.003s] PASS: Block count is 1 (actual: 1)
+[0.003s] 
+--- Test 5: Root block is retrievable ---
+[0.003s] PASS: Root block retrieved successfully
+[0.003s] 
+--- Test 6: Root block properties ---
+[0.003s]   - Block ID: blk_ff0000000000000000000000
+[0.003s]   - Content type: text
+[0.003s]   - Role: None
+[0.003s]   - Tags: []
+[0.003s] PASS: Root block has expected properties
+[0.003s] 
+--- Test 7: Root block is identified as root ---
+[0.003s] PASS: is_root() returns True
+[0.003s] 
+--- Test 8: Root has no children ---
+[0.003s] PASS: Root has 0 children (empty document)
+[0.003s] 
+--- Test 9: Document validation ---
+[0.004s] PASS: Document validates (no issues)
+[0.004s] 
+--- Test 10: Export to JSON ---
+[0.004s]   - Exported blocks: 1
+[0.004s] PASS: JSON export contains exactly 1 block
+[0.005s] 
+============================================================
+[0.005s] SUMMARY
+[0.005s] ============================================================
+[0.005s] Document ID: doc_1890d0500e6198bf
+[0.005s] Root Block ID: blk_ff0000000000000000000000
+[0.005s] Block Count: 1
+[0.005s] Status: PASS
+[0.005s] ============================================================
+
+[91m[1m| [0m[90m Bash     [0mSave Python test output
+
+Python test output saved
+

@@ -1,0 +1,48 @@
+[0.002s] ============================================================
+[0.002s] DOC-001: Create Empty Document and Verify Root Block
+[0.002s] ============================================================
+[0.002s] 
+--- Test 1: Create empty document ---
+[0.002s]   - Using ucp.create()
+[0.002s] PASS: Document.create() succeeded
+[0.002s] 
+--- Test 2: Document has valid ID ---
+[0.002s] PASS: Document has ID: doc_1890d0513dc0...
+[0.002s] 
+--- Test 3: Root block exists ---
+[0.002s] PASS: Root block ID accessible: blk_ff0000000000...
+[0.002s] 
+--- Test 4: Block count is 1 ---
+[0.002s] PASS: Block count is 1 (actual: 1)
+[0.002s] 
+--- Test 5: Root block is retrievable ---
+[0.002s] PASS: Root block retrieved successfully
+[0.002s] 
+--- Test 6: Root block properties ---
+[0.003s]   - Block ID: blk_ff0000000000000000000000
+[0.003s]   - Content type: text
+[0.003s]   - Role: None
+[0.003s]   - Tags: []
+[0.003s] PASS: Root block has expected properties
+[0.003s] 
+--- Test 7: Root block is identified as root ---
+[0.003s] PASS: is_root() returns True
+[0.003s] 
+--- Test 8: Root has no children ---
+[0.003s] PASS: Root has 0 children (empty document)
+[0.003s] 
+--- Test 9: Document validation ---
+[0.003s] PASS: Document validates (no issues)
+[0.003s] 
+--- Test 10: Export to JSON ---
+[0.003s]   - Exported blocks: 1
+[0.003s] PASS: JSON export contains exactly 1 block
+[0.003s] 
+============================================================
+[0.003s] SUMMARY
+[0.003s] ============================================================
+[0.003s] Document ID: doc_1890d0513dc002fc
+[0.003s] Root Block ID: blk_ff0000000000000000000000
+[0.003s] Block Count: 1
+[0.003s] Status: PASS
+[0.003s] ============================================================

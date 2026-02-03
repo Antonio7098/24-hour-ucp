@@ -1,0 +1,25 @@
+=== SET-001: cargo install ucp-cli Execution Log ===
+
+Date: Tue Feb 03 2026
+Command: cargo install ucp-cli
+
+--- Execution Output ---
+    Updating crates.io index
+     Ignored package `ucp-cli v0.1.10` is already installed, use --force to override
+
+--- Verification Output ---
+Binary Location: /home/antonio/.cargo/bin/ucp
+Version Check: ucp 0.1.10
+
+--- Crate Information ---
+Name: ucp-cli
+Version: 0.1.10
+License: MIT
+Rust Version: 1.75
+Documentation: https://docs.rs/ucp-cli/0.1.10
+Repository: https://github.com/unified-content/ucp
+Crates.io: https://crates.io/crates/ucp-cli
+
+--- Result ---
+Status: ALREADY INSTALLED
+Exit Code: 0 (success)

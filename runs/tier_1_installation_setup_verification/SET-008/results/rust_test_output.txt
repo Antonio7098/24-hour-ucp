@@ -1,0 +1,51 @@
+   Compiling ucp-api-test v0.1.0 (/home/antonio/programming/24-hour-testers/24-hour-ucp-testers/runs/tier_1_installation_setup_verification/SET-008/tests/rust)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.28s
+     Running `target/debug/ucp-api-test`
+=== SET-008: Rust ucp-api Compilation and Basic Usage Test ===
+
+[TEST 1] Creating UcpClient...
+  ✓ UcpClient created successfully
+
+[TEST 2] Creating document...
+  Document ID: doc_1890cfd8cf2ae660
+  Root block: blk_ff0000000000000000000000
+  ✓ Document created successfully
+
+[TEST 3] Getting document info...
+  Block count: 1
+  ✓ Document info retrieved successfully
+
+[TEST 4] Adding text content...
+  Text block ID: blk_75736a21bbbc68af93a9b6e7
+  ✓ Text content added successfully
+
+[TEST 5] Adding code block...
+  Code block ID: blk_1a0f2371962b04695846fe2b
+  ✓ Code block added successfully
+
+[TEST 6] Executing UCL command...
+  UCL executed, 1 results
+    ✓ Success: [BlockId(blk_077d8ebba91e1baf104ab74a)]
+  ✓ UCL execution completed
+
+[TEST 7] Validating document...
+  ✓ Document is valid (no issues found)
+
+[TEST 8] Serializing document to JSON...
+  ✓ JSON serialization successful
+  JSON length: 1953 bytes
+
+[TEST 9] Finding blocks by type...
+  Code blocks: 1
+  Text blocks: 2
+  ✓ Block search completed
+
+[TEST 10] Testing error handling with invalid UCL...
+  ✓ Correctly caught invalid UCL: Error type detected
+
+=== TEST SUMMARY ===
+All core operations completed successfully.
+Total execution time: 0.00ms
+Final block count: 4
+
+RESULT: PASS - Rust ucp-api crate compiles and functions correctly
