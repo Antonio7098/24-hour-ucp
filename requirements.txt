@@ -1,0 +1,9 @@
+# 24h-testers package from local development
+-e ../24-hour-testers
+
+# Runtime dependencies
+stageflow-core>=0.1.0
+
+# Development dependencies
+pytest>=7.0.0
+pytest-asyncio>=0.21.0

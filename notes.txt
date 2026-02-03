@@ -1,0 +1,40 @@
+## UCP Testing Setup
+
+This repo uses the 24h-testers package with custom agent-resources for UCP-specific testing.
+
+### Installation
+
+```bash
+# Install the package (editable mode for development)
+pip install -r requirements.txt
+```
+
+### Running Tests
+
+```bash
+# Run the processor with UCP agent-resources
+python run.py
+
+# Or use the CLI with custom resources
+24h-testers run --agent-resources ./agent-resources --verbose
+```
+
+### Configuration
+
+The agent-resources in this repo are modified for UCP testing:
+- AGENT_SYSTEM_PROMPT.md - UCP-specific testing instructions
+- TIER_REPORT_PROMPT.md - UCP report aggregation
+- INFINITE_BACKLOG_PROMPT.md - UCP backlog synthesis
+
+---
+
+## Testing Focus
+
+dont look at the ucp docs andd look at what it  does and design test scenarios for it. think about what a univeral agentic content editing/navigating tool should do, and then the testers can try and map ucp to it and report back on how well it does.
+create a highly detailed packet describing all the possible scenarios where an agent might be interacting with content (other than coding agents). Vetry long checklist with 100 items in, starting foundational and moving up, organised into logical tiers.
+they should use stageflow (docs provided) or any pipelines they build. if they find bugs, they can also report them but the focus is on ucp. make this clear in the agent system prompt.
+they access ucp and stageflow through pip, npm, and crates . For each test, they shuuld build using js, python, rust, and cli implementatins. ou may need to change the file structure (there is an instruction document laying it out) and the system prompt. The same agent does all three in one test.
+the docs are provided in the repo ./ucp-docs, stageflow-docs
+they should highlight any bugs, gaps between docs and reality, places where documentation can be inproved/enhanced, made clearer, anything that can be added to improve dx, any abstractions that would make it easier to use,
+they should dig into everything meticulously. the syntax. is it powerful enough. are the block types enough, or should they be expanded? how can we encompass everything in the simplest, most elegant, yet powerful way??
+they should research other block/document entitites (case studies). how do they doit? what can we learn from them? for uture, how could we translate them tp ucm?

@@ -1,0 +1,66 @@
+{
+  "sessionId": "session-1770140232709",
+  "status": "running",
+  "startedAt": "2026-02-03T17:37:12.710318",
+  "completedAt": null,
+  "runs": [
+    {
+      "id": "SET-001-1770140232712",
+      "item_id": "SET-001",
+      "item": {
+        "id": "SET-001",
+        "target": "Verify `cargo install ucp-cli` completes successfully",
+        "priority": "P0",
+        "risk": "High",
+        "status": "\u2610 Not Started",
+        "tier": "Tier 1: Installation & Setup Verification"
+      },
+      "status": "running",
+      "stage": "processing",
+      "attempt": 0,
+      "max_attempts": 4,
+      "started_at": "2026-02-03T17:37:12.722354",
+      "completed_at": null,
+      "duration_ms": 2,
+      "error": null,
+      "pid": 436930,
+      "run_dir": "/home/antonio/programming/24-hour-testers/24-hour-ucp-testers/runs/tier_1_installation_setup_verification/SET-001",
+      "log_path": "/home/antonio/programming/24-hour-testers/24-hour-ucp-testers/runs/tier_1_installation_setup_verification/SET-001/results/agent-SET-001-1770140232718.log",
+      "output_length": 0
+    },
+    {
+      "id": "SET-002-1770140232714",
+      "item_id": "SET-002",
+      "item": {
+        "id": "SET-002",
+        "target": "Verify `ucp --version` returns valid version string",
+        "priority": "P0",
+        "risk": "High",
+        "status": "\u2610 Not Started",
+        "tier": "Tier 1: Installation & Setup Verification"
+      },
+      "status": "running",
+      "stage": "processing",
+      "attempt": 0,
+      "max_attempts": 4,
+      "started_at": "2026-02-03T17:37:12.723853",
+      "completed_at": null,
+      "duration_ms": 0,
+      "error": null,
+      "pid": 436931,
+      "run_dir": "/home/antonio/programming/24-hour-testers/24-hour-ucp-testers/runs/tier_1_installation_setup_verification/SET-002",
+      "log_path": "/home/antonio/programming/24-hour-testers/24-hour-ucp-testers/runs/tier_1_installation_setup_verification/SET-002/results/agent-SET-002-1770140232720.log",
+      "output_length": 0
+    }
+  ],
+  "summary": {
+    "session_id": "session-1770140232709",
+    "status": "running",
+    "total": 2,
+    "pending": 0,
+    "active": 2,
+    "completed": 0,
+    "failed": 0,
+    "timeout": 0
+  }
+}
