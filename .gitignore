@@ -67,7 +67,6 @@ env/
 
 # Node.js
 node_modules/
-runs/
 .checklist-processor/
 
 # Windows device placeholder files
@@ -98,7 +97,6 @@ temp/
 *.diff
 
 # Runs and output
-runs/*
 !runs/.gitkeep
 tier-reports/
 output/
